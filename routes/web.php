@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/Home');
+});
+
+Route::any('questions',function(){
+    return view('pages/questions');
+});
+Route::any('start',function(){
+    return view('pages/start');
+});
+Route::any('end',function(){
+    return view('pages/end');
 });
