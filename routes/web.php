@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,6 @@ Route::any('start',function(){
 Route::any('end',function(){
     return view('pages/end');
 });
+
+Route::post('/add', [QuestionController::class, 'create']);
+

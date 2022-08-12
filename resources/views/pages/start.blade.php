@@ -7,6 +7,7 @@
     <div class="col-md-5"></div>
     <div class="col-md-4">
         <h3>ARE YOU READY </h3>
+        <a href="#"><button class="btn btn-primary" style="margin-left: 10%">Start Quiz</button></a>
     </div>
 </div>
 @endsection

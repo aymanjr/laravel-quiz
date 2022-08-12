@@ -80,15 +80,39 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>#</label>
-                            <input type="number" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Question</label>
+                            <label>Question : </label>
                             <input type="text" class="form-control" required>
                         </div>
 
+                        <div class="form-row">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="A" name="opa">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="B" name="opb">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="C" name="opc">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" placeholder="D" name="opd">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <label for="">Answer</label>
+                            <select id="inputState" name="ans" class="form-control">
+                              <option selected>A</option>
+                              <option>B</option>
+                              <option>C</option>
+                              <option>D</option>
+                            </select>
+                          </div>
+
+
                     </div>
+
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                         <input type="submit" class="btn btn-success" value="Add">
@@ -105,7 +129,7 @@
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-                        <h4 class="modal-title">Delete Employee</h4>
+                        <h4 class="modal-title">Delete Question</h4>
                         <button type="button" class="close" data-dismiss="modal"
                             aria-hidden="true">&times;</button>
                     </div>
