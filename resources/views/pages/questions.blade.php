@@ -18,14 +18,10 @@
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
+
                     <thead>
                         <tr>
-                            <th>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="selectAll">
-                                    <label for="selectAll"></label>
-                                </span>
-                            </th>
+
                             <th>#</th>
                             <th>Question</th>
 
@@ -33,24 +29,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($questions as $q)
+
                         <tr>
-                            <td>
-                                <span class="custom-checkbox">
-                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                    <label for="checkbox1"></label>
-                                </span>
-                            </td>
-                            <td>Thomas Hardy</td>
-                            <td>thomashardy@mail.com</td>
+
+                            <td>{{$loop->index}}</td>
+                            <td>{{$q->question}}</td>
 
                             <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i
-                                        class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+                                <a href="#editEmployeeModal{{$q->id}}" class="edit" data-toggle="modal"><i
+                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+
+
+                                    <a href="#deleteEmployeeModal{{$q->id}}" class="delete" data-toggle="modal"><i
                                         class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </td>
                         </tr>
 
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="clearfix">
@@ -68,7 +64,7 @@
             </div>
         </div>
     </div>
-    <!-- Edit Modal HTML -->
+    <!-- add Modal HTML -->
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -122,12 +118,66 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-
-    <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <div id="editEmployeeModal{{$q->id}}" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="update" method="post">
+                    @csrf
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Question</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Question : </label>
+                            <input type="text" style="visibility: hidden" name="id" value="{{$q->id}}">
+                            <input type="text" class="form-control" value="{{$q->question}}" name="question" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col">
+                              <input type="text" class="form-control" value="{{$q->a}}" placeholder="A" name="opa">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control"  value="{{$q->b}}" placeholder="B" name="opb">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="col">
+                              <input type="text" class="form-control" value="{{$q->c}}" placeholder="C" name="opc">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control" value="{{$q->d}}" placeholder="D" name="opd">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <label for="">Answer</label>
+                            <select id="inputState" name="ans" class="form-control">
+                              <option value="{{$q->ans}}" selected>{{$q->ans}}</option>
+
+                              <option>A</option>
+                              <option>B</option>
+                              <option>C</option>
+                              <option>D</option>
+                            </select>
+                          </div>
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-success" value="Edit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal HTML -->
+    <div id="deleteEmployeeModal{{$q->id}}" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="delete">
                     <div class="modal-header">
                         <h4 class="modal-title">Delete Question</h4>
                         <button type="button" class="close" data-dismiss="modal"

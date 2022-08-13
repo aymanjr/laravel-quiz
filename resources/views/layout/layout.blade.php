@@ -345,6 +345,7 @@
 @yield('start')
 @yield('questions')
 @yield('end')
+@yield('answers')
 
 </body>
 </html>
