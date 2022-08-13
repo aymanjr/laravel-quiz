@@ -81,7 +81,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Question : </label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" name="question" required>
                         </div>
 
                         <div class="form-row">
