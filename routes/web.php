@@ -33,7 +33,9 @@ Route::post('/add', [QuestionController::class, 'create']);
 Route::get('/questions', [QuestionController::class, 'show']);
 Route::post('/update', [QuestionController::class, 'update']);
 Route::post('/delete', [QuestionController::class, 'delete']);
-Route::post('/startquiz', [QuestionController::class, 'startquiz']);
+Route::any('/startquiz', [QuestionController::class, 'startquiz']);
+Route::any('/submitans', [QuestionController::class, 'submitans']);
+
 
 
 
